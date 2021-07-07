@@ -12,4 +12,4 @@ Repositório criado para a matéria de **Projeto de Software**, onde realizaremo
 | 6   | Alterar atributos do empregado | :heavy_exclamation_mark:
 
 ##### **Para visualização do PDF** :computer:
-###### Segue o [link](https://github.com/carolnesso/Folha-de-Pagamento/blob/main/documento/folha_pagamento.pdf) para as instruções do projeto.
+Segue o [link](https://github.com/carolnesso/Folha-de-Pagamento/blob/main/documento/folha_pagamento.pdf) para as instruções do projeto.
