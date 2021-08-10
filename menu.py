@@ -8,18 +8,14 @@ def menu():
         print('\nHello there !\nWhich section will be chosen?\n\n1 - Add employee\n2 - Remove employee\n3 - Manager´s area\n4 - Rotate Schedule\n5 - Payment Schedule\n6 - New Schedule\n0 - Exit')
         selection = input('\n')
         if selection == "1":
-            add_Employee()
+            Add_Employee()
 
         if selection == "2":
-            #remove_employee
-            pass
+            Remove_Employee()
 
         if selection == "3":
-            action = ""
-            while action != "0":
-                print('\nHello Manager !\nWhich action you wanna do?\n\n1 - Edit employee attributes\n2 - Timecard\n3 - Syndicate\n4 - Sales\n5 - Undo/Redo\n0 - Exit')
-                action = input('\n')
-
+            Manegers_Menu()
+    
         if selection == "4":
             #rodar_folha_de_pagamento
             pass

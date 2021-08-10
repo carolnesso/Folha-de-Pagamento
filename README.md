@@ -5,7 +5,7 @@ Repositório criado para a matéria de **Projeto de Software**, onde realizaremo
 |Atividade   | Função   | Status
 |:------------:|:----------:|:-------:
 | 1   | Adicionar empregado    | :white_check_mark:
-| 2   | Remover empregado     | :heavy_exclamation_mark:
+| 2   | Remover empregado     | :white_check_mark:
 | 3   | Lançar cartão de ponto    | :heavy_exclamation_mark:
 | 4   | Lançar resultado de venda   | :heavy_exclamation_mark:
 | 5   | Lançar taxa de serviço | :heavy_exclamation_mark:

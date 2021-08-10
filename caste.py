@@ -35,7 +35,7 @@ class Salaried(Employee):
 
 class Commissioned(Salaried):
 
-    def __init__(self, name, address, type, payment_day, way_of_receiving, syndicate, id, commissioned_salary):
-        self.commissioned_salary = commissioned_salary
+    def __init__(self, name, address, type, payment_day, way_of_receiving, syndicate, id, monthly_salary, commission_fee):
+        self.commission_fee = commission_fee
 
-        super().__init__(name, address, type, payment_day, way_of_receiving, syndicate, id)
+        super().__init__(name, address, type, payment_day, way_of_receiving, syndicate, id, monthly_salary)
