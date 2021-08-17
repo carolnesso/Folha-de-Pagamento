@@ -47,7 +47,8 @@ def type(self, valided_type):
 
 @last_payment_day.setter
 def last_payment_day(self, last_updated_date):
-    pass
+    self.__last_payment_day = last_updated_date
+
 
 @way_of_receiving.setter
 def way_of_receving(self, valid_way_of_receiving):
@@ -58,12 +59,20 @@ def way_of_receving(self, valid_way_of_receiving):
 
 @syndicate.setter
 def syndicate(self, boolean):
-    pass
+    self.__syndicate = boolean
 
 @id.setter
 def id(self, i):
     #i will be the count of the list, in this case, where we find the employee
-    pass
+    self.__id = i
+    
+
+
+
+
+
+
+
 
 
 #Getter

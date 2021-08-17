@@ -1,7 +1,12 @@
 from tkinter.constants import NONE
 from collections import *
+from employee import *
+from hourly import *
+from salaried import *
+from commissioned import *
+
 #from caste import *
-from teste import *
+#from teste import *
 
 def Manegers_Menu():
 
@@ -11,8 +16,7 @@ def Manegers_Menu():
             print('\nHello Manager !\nWhich action you wanna do?\n\n1 - Edit employee attributes\n2 - Timecard\n3 - Syndicate\n4 - Sales\n5 - Undo/Redo\n6 - Show employess\n0 - Exit')
             action = input('\n')
 
-            if action == '1': #edit_employee_atributs()
-                pass
+            if action == '1': Edit_employee_attributes()
 
             if action == '2': #timecard
                 pass
@@ -47,70 +51,59 @@ def Add_Employee():
     employee = ''
     id = employee_list.__len__()
     
+    #while type != 'Horista' or type != 'horista' or type != 'Assalariado' or type != 'assalariado' or type != 'Comissionado' or type != 'comissionado':
 
     if type == 'Horista' or type == 'horista': 
-        hourly_wage = input('Please enter the hourly rate of work:\n')
+        hourly_wage = float(input('Please enter the hourly rate of work:\n'))
         employee = Hourly(name, address, type, last_payment_day, way_of_receiving, syndicate, id, hourly_wage, 0)
 
     elif type == 'Assalariado' or type == 'assalariado':
-        monthly_salary = input('Please, enter the salary:\n')
+        monthly_salary = float(input('Please, enter the salary:\n'))
         employee = Salaried(name, address, type, last_payment_day, way_of_receiving, syndicate, id, monthly_salary)
 
     elif type == 'Comissionado' or type == 'comissionado':
-        monthly_salary = input('Please, enter the salary:\n')
-        commission_fee = input('Please, enter the sales commission rate:\n')
+        monthly_salary = float(input('Please, enter the salary:\n'))
+        commission_fee = float(input('Please, enter the sales commission rate:\n'))
         employee = Commissioned(name, address, type, last_payment_day, way_of_receiving, syndicate, id, monthly_salary, commission_fee)
 
-    else: print('Please, insert a valid type, like, Horista, Assalariado or Comissionado.\n'), Add_Employee()
+    else: print('Please, insert a valid type, like, Horista, Assalariado or Comissionado and star again.\n'), Add_Employee()
 
     print('Your employees ID will be:', id,'\n')
 
     employee_list.append(employee)
 
-
-    """name = input('Enter a name:\n')
-    address = input('Now, enter an address:\n')
-    payment_day = None
-    way_of_receiving = input('Enter payment method:\n')
-    syndicate = input('Do you belong to the union?\n')
-
-    id = employee_list.__len__()
-
-    if syndicate == 'Sim' or syndicate == 'sim': syndicate = True
-
-    else: syndicate = False
-
-    print('Your employees ID will be:', id,'\n')
-    employee = ''
-
-    if type == 'Horista' or type == 'horista':
-        hourly_wage = input('Now, enter the work/hour value:')
-        employee = Hourly(name, address, type, payment_day, way_of_receiving, syndicate, id, hourly_wage, -10)
-
-    if type == 'Assalariado' or type == 'assalariado':
-        monthly_salary = input('Now, enter the salary amount:')
-        employee = Salaried(name, address, type, payment_day, way_of_receiving, syndicate, id, monthly_salary)
-
-    if type == 'Comissionado' or type == 'comissionado':
-        monthly_salary = input('Now, enter the salary amount:')
-        commission_fee = input('Now, enter the commission fee value:')
-        employee = Commissioned(name, address, type, payment_day, way_of_receiving, syndicate, id, monthly_salary, commission_fee)
-"""
-    #employee_list.append(employee)
     #Write_File_Employees()
 
-
+    
 def Remove_Employee():
 
-    id = input('Please, enter the ID employee:\n')
-    employee_list.pop(int(id))
+    id = int(input('Please, enter the ID employee:\n'))
+    employee_list.pop(id)
 
-def Edit_employee_atributs():
+def Edit_employee_attributes():
 
-    id = input('Please, enter the ID employee:\n')
+    id = int(input('Please, enter the ID employee:\n'))
     attibute = input('Wich attribute do you wanna change?\n')
 
-    if attibute == 'Nome' or attibute == 'nome': employee_list[id].name = input('Enter the new name:\n')
+    if attibute == 'nome': employee_list[id].name = input('Enter the new name:\n')
+
+    elif attibute == 'endereço': employee_list[id].address = input('Enter the new address:\n')
+
+    elif attibute == 'o ultimo dia de pagamento': employee_list[id].last_payment_day = input('Enter the last payment day:\n')
+
+    elif attibute == 'como irei receber': employee_list[id].way_of_receiving = input('Enter the new way of receiving:\n')
+
+    elif attibute == 'sindicato': employee_list[id].syndicate = input('Enter the new syndicate status:\n')
+
+    elif attibute == 'contrato empregaticio': employee_list[id].type = input('Enter the new employment contract type:\n')
+
+    elif attibute == 'valor da hora trabalhada': employee_list[id].hourly_wage = float(input('Enter the new ourly rate of work:\n'))
+
+    elif attibute == 'valor do salario mensal': employee_list[id].monthly_salary = float(input('Enter the new the salary:\n'))
+
+    elif attibute == 'valor da taxa de comissao': employee_list[id].monthly_salary = float(input('Enter the new sales commission rate:\n'))
+
+    else: print('Please, insert a valid attributes, like: nome; endereço; ultimo dia de pagamento; como irei receber; sindicado; contrato empregaticio; valor da hora trabalhada; valor do salario mensal ou valor da taxa de comissao.\n'), Edit_employee_attributes()
 
 
 def Print_Employees(employee_list):
