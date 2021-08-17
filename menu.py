@@ -1,4 +1,4 @@
-import collections
+from collections import *
 from functions import *
 from tkinter import *
 
