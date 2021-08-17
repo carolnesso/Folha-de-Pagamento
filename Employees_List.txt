@@ -1,26 +1,9 @@
 Employee's ID:0
-Name:Victor Ferro Sousa Monteiro
-Address:Rua Suely de Mendes, Bairro: Jatiuca
-Employment contract type:Horista
+Name:Ana
+Address:Casa
+Employment contract type:horista
 Syndicate:True
 Last day payment:None
-Hour Price:12000.00
-Timecard:-10
-
-Employee's ID:1
-Name:Ana Carolina Nesso Guedes
-Address:Rua Dr. Carlos de Miranda, Bairro: Poço
-Employment contract type:Comissionado
-Syndicate:True
-Last day payment:None
-Monthly Salary:5000.00
-Commission:1.5
-
-Employee's ID:0
-Name:Paloma Lacerda
-Address:Jatiuca
-Employment contract type:Assalariado
-Syndicate:True
-Last day payment:None
-Monthly Salary:5000.00
+Hour Price:11.0
+Timecard:0
 
