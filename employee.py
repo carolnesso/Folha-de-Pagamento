@@ -46,8 +46,8 @@ class Employee:
 
     @address.setter
     def address(self, valid_address):
-        while valid_address != str:
-            valid_address = input('Insert a valid address:\n')
+        
+        valid_address = input('Insert a valid address:\n')
 
         self.__address = valid_address
 
@@ -62,8 +62,7 @@ class Employee:
 
     @way_of_receiving.setter
     def way_of_receving(self, valid_way_of_receiving):
-        while valid_way_of_receiving != str:
-            valid_way_of_receiving = input('Please, insert a valid way of receiving, like Depósito em conta; Cheque em mãos; Envio do cheque pelos correios.\n')
+        valid_way_of_receiving = input('Please, insert a valid way of receiving, like Depósito em conta; Cheque em mãos; Envio do cheque pelos correios.\n')
         
         self.__way_of_receiving = valid_way_of_receiving
 

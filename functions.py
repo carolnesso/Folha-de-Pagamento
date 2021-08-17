@@ -1,12 +1,5 @@
-#from tkinter.constants import NONE
-from collections import *
-from employee import *
-from hourly import *
-from salaried import *
-from commissioned import *
-
-#from caste import *
-#from teste import *
+from tkinter.constants import NONE
+from imports import *
 
 employee_list = []
 
@@ -32,7 +25,6 @@ def Manegers_Menu():
                 pass
 
             if action == '6': Print_Employees(employee_list)
-
 
 def Add_Employee():
 
@@ -73,27 +65,42 @@ def Add_Employee():
 
     employee_list.append(employee)
 
-    #Write_File_Employees()
+    Write_File_Employees()
 
-    
 def Remove_Employee():
 
     id = int(input('Please, enter the ID employee:\n'))
     employee_list.pop(id)
 
-
 def Timecard():
 
     id = int(input('Please, enter the ID employee:\n'))
     
-    """if employee_list[id].type != 'Horista' or employee_list[id].type != 'horista':
-        print('Please, enter a ID number from a hourly employee!\n', Timecard())"""
+    while employee_list[id].type != 'Horista' and employee_list[id].type != 'horista':
+        id = int(input('Please, enter a ID number from a hourly employee!\n'))
 
     employee_list[id].timecard = float(input('Please, enter the number of hours worked:'))
-    return employee_list[id].timecard
 
     print("Done, timecard setted!\nBacking to Manager's menu...\n")
+    Edit_Employees_File()
 
+def Syndicate():
+
+    id = int(input('Please, enter the ID employee:\n'))
+
+    #while employee_list[id].syndicate != True:
+        #id = int(input('Please, enter the ID employee who belongs to the union:\n'))
+
+def Sales_Balance():
+
+    sale_value = float(input('Please, enter the value of the sale: '))
+    i = input('Do you have a commission fee?')
+    if i == 'sim' or i == 'Sim':
+        #paymentrool(sale_value)
+        pass
+    else:
+        #paymentrool(sale_valeu)
+        pass
 
 def Edit_employee_attributes():
 
@@ -122,14 +129,11 @@ def Edit_employee_attributes():
 
     else: print('Please, insert a valid attributes, like: nome; endereço; ultimo dia de pagamento; como irei receber; sindicado; contrato empregaticio; valor da hora trabalhada; valor do salario mensal ou valor da taxa de comissao.\n'), Edit_employee_attributes()
 
-    #Edit_employee_attributes()
+    Edit_employee_attributes()
 
     print("Done, attributes has modified by the manager. Backing to Manager's menu...\n")
 
-
 def Print_Employees(employee_list):
-
-    print('Entrei na função print')
 
     for i in  range(len(employee_list)):
 
@@ -151,9 +155,7 @@ def Print_Employees(employee_list):
         if employee_list[i].type  == 'Assalariado' or employee_list[i].type =='assalariado':
             print('Salary= ', employee_list[i].monthly_salary,'\n')
 
-        #Write_File_Employees()
-        print("\nDone!\nBacking to Manager's menu...\n")
-
+    print("\nDone!\nBacking to Manager's menu...\n")
 
 def Write_File_Employees():
     
@@ -181,7 +183,34 @@ def Write_File_Employees():
                 file.write('\n')
 
 def Edit_Employees_File():
-    with open('Employees_List.txt', 'a') as file:
+
+    with open('Employees_List_data.txt', 'a+') as file:
+        for i in range(len(employee_list)):
+            file.write("Employee's ID:" + str(employee_list[i].id) + '\n')
+            file.write('Name:' + str(employee_list[i].name) + '\n')
+            file.write('Address:' + str(employee_list[i].address) + '\n')
+            file.write('Employment contract type:' + str(employee_list[i].type) + '\n')
+            file.write('Syndicate:' + str(employee_list[i].syndicate) + '\n')
+            file.write('Last day payment:' + str(employee_list[i].last_payment_day) + '\n')
+
+            if employee_list[i].type =='Horista' or employee_list[i].type == 'horista':
+                file.write('Hour Price:' + str(employee_list[i].hourly_wage) + '\n')
+                file.write('Timecard:' + str(employee_list[i].timecard) + '\n')
+                file.write('\n')
+
+            if employee_list[i].type =='Comissionado' or employee_list[i].type =='comissionado':
+                file.write('Monthly Salary:' + str(employee_list[i].monthly_salary) + '\n')
+                file.write('Commission:' + str(employee_list[i].commission_fee) + '\n')
+                file.write('\n')
+
+            if employee_list[i].type  == 'Assalariado' or employee_list[i].type =='assalariado':
+                file.write('Monthly Salary:' + str(employee_list[i].monthly_salary) + '\n')
+                file.write('\n')
+
+
+def Read_Employees_File():
+
+    with open('Employees_List_data.txt', 'a') as file:
         for i in range(len(employee_list)):
             file.write("Employee's ID:" + str(employee_list[i].id) + '\n')
             file.write('Name:' + str(employee_list[i].name) + '\n')
