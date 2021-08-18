@@ -5,7 +5,7 @@ employee_list = []
 
 def Manegers_Menu():
 
-    action = ""
+    action = ''
             
     while action != "0":
             print('\nHello Manager !\nWhich action you wanna do?\n\n1 - Edit employee attributes\n2 - Timecard\n3 - Syndicate\n4 - Sales\n5 - Undo/Redo\n6 - Show employess\n0 - Exit')
@@ -15,11 +15,9 @@ def Manegers_Menu():
 
             if action == '2': Timecard()
 
-            if action == '3': #syndicate
-                pass
+            if action == '3': Syndicate()
 
-            if action == '4': #sales
-                pass
+            if action == '4': Sales_Balance()
 
             if action == '5': #undo_redo
                 pass
@@ -42,7 +40,8 @@ def Add_Employee():
     employee = ''
     id = employee_list.__len__()
     
-    #while type != 'Horista' or type != 'horista' or type != 'Assalariado' or type != 'assalariado' or type != 'Comissionado' or type != 'comissionado':
+    while type != 'Horista' and type != 'horista' and type != 'Assalariado' and type != 'assalariado' and type != 'Comissionado' and type != 'comissionado':
+        type = input('Please, insert a valid type, like, Horista, Assalariado or Comissionado.\nEnter the employment contract type:\n')
 
     if type == 'Horista' or type == 'horista': 
         hourly_wage = float(input('Please enter the hourly rate of work:\n'))
@@ -56,8 +55,6 @@ def Add_Employee():
         monthly_salary = float(input('Please, enter the salary:\n'))
         commission_fee = float(input('Please, enter the sales commission rate:\n'))
         employee = Commissioned(name, address, type, last_payment_day, way_of_receiving, syndicate, id, monthly_salary, commission_fee)
-
-    else: print('Please, insert a valid type, like, Horista, Assalariado or Comissionado and star again.\n'), Add_Employee()
 
     print('Your employees ID will be:', id,'\n')
 
@@ -79,28 +76,38 @@ def Timecard():
     while employee_list[id].type != 'Horista' and employee_list[id].type != 'horista':
         id = int(input('Please, enter a ID number from a hourly employee!\n'))
 
-    employee_list[id].timecard = float(input('Please, enter the number of hours worked:'))
+    worked_hours = float(input('Please, enter the number of hours worked:'))
+    employee_list[id].timecard += worked_hours
+
+    if worked_hours > 8:
+        day_extra_hours = worked_hours - 8
+        #employee_list[id].week_hours
 
     print("Done, timecard setted!\nBacking to Manager's menu...\n")
-    Edit_Employees_File()
+    #Edit_Employees_File()
 
 def Syndicate():
 
     id = int(input('Please, enter the ID employee:\n'))
 
-    #while employee_list[id].syndicate != True:
-        #id = int(input('Please, enter the ID employee who belongs to the union:\n'))
+    while employee_list[id].syndicate != True:
+        id = int(input('Please, enter the ID employee who belongs to the union:\n'))
+
+    union_fee = float(input('Enter the union fee for this employee: '))
+    extra_rate = input('Do you have an additional union fee? ')
+
+    if extra_rate == 'Sim':
+        extra_rate = float(input('Enter the additional union fee for this employee: '))
+        employee_list[id].syndicate = extra_rate + union_fee
+
+    else: employee_list[id].syndicate = union_fee
 
 def Sales_Balance():
 
     sale_value = float(input('Please, enter the value of the sale: '))
-    i = input('Do you have a commission fee?')
+    i = input('Do you have a commission fee? ')
     if i == 'sim' or i == 'Sim':
-        #paymentrool(sale_value)
-        pass
-    else:
-        #paymentrool(sale_valeu)
-        pass
+        Commission_Sales(employee_list, sale_value)
 
 def Edit_employee_attributes():
 
@@ -129,7 +136,7 @@ def Edit_employee_attributes():
 
     else: print('Please, insert a valid attributes, like: nome; endereço; ultimo dia de pagamento; como irei receber; sindicado; contrato empregaticio; valor da hora trabalhada; valor do salario mensal ou valor da taxa de comissao.\n'), Edit_employee_attributes()
 
-    Edit_employee_attributes()
+    #Edit_employee_attributes()
 
     print("Done, attributes has modified by the manager. Backing to Manager's menu...\n")
 
@@ -145,15 +152,20 @@ def Print_Employees(employee_list):
         print("Last payment day =",employee_list[i].last_payment_day)
 
         if employee_list[i].type =='Horista' or employee_list[i].type == 'horista':
-            print("hour_price=",employee_list[i].hourly_wage)
-            print("timecard=",employee_list[i].timecard,'\n')
+            print("Hour pric e=",employee_list[i].hourly_wage)
+            print("timecard =",employee_list[i].timecard,'\n')
 
         if employee_list[i].type =='Comissionado' or employee_list[i].type =='comissionado':
-            print("salary=",employee_list[i].monthly_salary)
-            print("comision=",employee_list[i].commission_fee,'\n')        
+            for a in range(len(employee_list[i].sales)):
+                print('Sales:\n|',employee_list[i].sales[a],'|')
+
+            print("salary =",employee_list[i].monthly_salary)
+            print("comision =",employee_list[i].commission_fee,'\n')        
 
         if employee_list[i].type  == 'Assalariado' or employee_list[i].type =='assalariado':
-            print('Salary= ', employee_list[i].monthly_salary,'\n')
+            print('Salary =', employee_list[i].monthly_salary,'\n')
+
+        print("Union fee =",employee_list[i].syndicate)
 
     print("\nDone!\nBacking to Manager's menu...\n")
 
@@ -206,7 +218,6 @@ def Edit_Employees_File():
             if employee_list[i].type  == 'Assalariado' or employee_list[i].type =='assalariado':
                 file.write('Monthly Salary:' + str(employee_list[i].monthly_salary) + '\n')
                 file.write('\n')
-
 
 def Read_Employees_File():
 

@@ -1,17 +1,9 @@
 Employee's ID:0
-Name:ANA CAROLINA
-Address:RUA DR. CARLOS MIRANDA, POCP
-Employment contract type:Horista
+Name:casa
+Address:casa
+Employment contract type:comissionado
 Syndicate:True
 Last day payment:None
-Hour Price:8.0
-Timecard:0
-
-Employee's ID:1
-Name:MARIA VICTORIA
-Address:RUA DR. CARLOS JATOBA,  POCO
-Employment contract type:Assalariado
-Syndicate:False
-Last day payment:None
-Monthly Salary:500000.0
+Monthly Salary:70.0
+Commission:0.02
 
