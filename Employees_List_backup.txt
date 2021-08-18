@@ -1,0 +1,9 @@
+Employee's ID:0
+Name:caro
+Address:casa
+Employment contract type:horista
+Syndicate:False
+Last day payment:None
+Hour Price:5.0
+Timecard:0
+

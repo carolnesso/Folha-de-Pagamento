@@ -1,9 +1,9 @@
 Employee's ID:0
-Name:Ana
-Address:Casa
-Employment contract type:horista
+Name:casa
+Address:casa
+Employment contract type:comissionado
 Syndicate:True
 Last day payment:None
-Hour Price:11.0
-Timecard:0
+Monthly Salary:70.0
+Commission:0.02
 
